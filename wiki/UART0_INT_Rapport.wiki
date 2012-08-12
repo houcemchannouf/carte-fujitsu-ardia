@@ -9,9 +9,9 @@ Dans ce document on s’intéresse à la mode asynchrone avec interruption qui c
 ==Initialisation de l’UART :==
 
 
-||Prototype||?  vUART0_iInitUART(void)||
-||Paramètres||?  void?  E?  -||
-||Renvoi||?  void?  S?  -||
+||Prototype||  vUART0_iInitUART(void)||
+||Paramètres||  void E  -||
+||Renvoi||  void  S  -||
 ||Fonction||?  Cette fonction initialise UART avec un mode 0 fonctionnement|| 
 ||Condition|| ?  Cette fonction est appelée avant la manipulation de UART||
 
@@ -19,24 +19,24 @@ Dans ce document on s’intéresse à la mode asynchrone avec interruption qui c
 
 *Algorithme :*
 
-•?  Configurer la forme de donnée
-•?  Configurer la longueur de donnée
-•?  Configurer le Baud rate
-•?  Configurer la longueur de bit de stop
-•?  Désactiver le bit de parité
-•?  Activé la transmission
-•?  Activé la réception
-•?  Activé les Pins SIN0 et SOT0 pour la réception et la transmission.
+•  Configurer la forme de donnée
+•  Configurer la longueur de donnée
+•  Configurer le Baud rate
+•  Configurer la longueur de bit de stop
+•  Désactiver le bit de parité
+•  Activé la transmission
+•  Activé la réception
+•  Activé les Pins SIN0 et SOT0 pour la réception et la transmission.
 
 
 ==Réception de donnée :==
 
 
-||Prototype||?  void RX_UART0(void)||
-||Paramètres||?  Void?  E     -||
-||Renvoi||?  Void?  S?  - Donnée Recu||
-||Fonction||?  Cette fonction commande la réception des données||
-||Condition||?  Sans objet.||
+||Prototype||  void RX_UART0(void)||
+||Paramètres||  Void  E     -||
+||Renvoi||  Void  S  - Donnée Recu||
+||Fonction||  Cette fonction commande la réception des données||
+||Condition||  Sans objet.||
 *Fonction : *void RX_UART0(void)
 
 *Algorithme: *
@@ -50,11 +50,11 @@ Dans ce document on s’intéresse à la mode asynchrone avec interruption qui c
 ==Transmission de donnée :==
 
 
-||Prototype||?  Void TX_UART0(void)||
-||Paramétres||?  Void?  E?  - Donnée transmit||
-||Renvoi||?  Void?  S?  -||
-||Fonction||?  Cette fonction commande la transmission des données||
-||Condition||?  Sans objet.||
+||Prototype||  Void TX_UART0(void)||
+||Paramétres||  Void  E  - Donnée transmit||
+||Renvoi||  Void  S  -||
+||Fonction||  Cette fonction commande la transmission des données||
+||Condition||  Sans objet.||
 *Fonction : *TX_UART0(void)
 
 *Algorithme : *
