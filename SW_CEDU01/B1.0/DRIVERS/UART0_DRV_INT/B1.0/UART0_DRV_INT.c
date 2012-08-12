@@ -27,7 +27,7 @@
 // INCUSER
 //****************************************************************************//
 
-#include "../Drivers/UART0_INT/UART0_DRV.h"
+#include "..\SW_CEDU01\B1.0\UART0_DRV_INT\UART0_DRV_INT.h"
 #define MAX 100;
 
 unsigned char RXbuf[MAX];   // Reception Buffer
