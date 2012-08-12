@@ -27,8 +27,8 @@
 // INCUSER
 //****************************************************************************//
 
-#include "..\Drivers\mb96348rs.h"
-#include "..\Drivers\CLV_DRV\CLV_DRV.cfg"
+#include "..\SW_CEDU01\B1.0\SYSTEME\REG\mb96348rs.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\CLV_DRV\CLV_DRV.cfg"
 
 
 
