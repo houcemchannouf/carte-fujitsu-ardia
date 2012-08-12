@@ -27,7 +27,7 @@
 // INCUSER
 //****************************************************************************//
 
-#include "..\Drivers\UART_0\UART0_DRV.h"
+#include "..\SW_CEDU01\B1.0\UART0_DRVV\UART0_DRV.h"
 
 void vUART0_iInitUART(void)
 {
