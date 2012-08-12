@@ -12,8 +12,8 @@ Dans ce document on s’intéresse à la mode asynchrone avec interruption qui c
 ||Prototype||  vUART0_iInitUART(void)||
 ||Paramètres||  void E  -||
 ||Renvoi||  void  S  -||
-||Fonction||?  Cette fonction initialise UART avec un mode 0 fonctionnement|| 
-||Condition|| ?  Cette fonction est appelée avant la manipulation de UART||
+||Fonction||  Cette fonction initialise UART avec un mode 0 fonctionnement|| 
+||Condition||  Cette fonction est appelée avant la manipulation de UART||
 
 *Fonction : * void vUART0_iInitUART(void)
 
