@@ -28,7 +28,7 @@
 //****************************************************************************//
 
 
-#include "..\Drivers\LIN0_DRV\LIN0_DRV.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\LIN0_DRV\LIN0_DRV.h"
 
 
 #define DATALENGTH 8
