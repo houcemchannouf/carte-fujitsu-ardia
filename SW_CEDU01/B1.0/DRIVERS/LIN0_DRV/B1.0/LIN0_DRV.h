@@ -27,8 +27,8 @@
 // INCUSER
 //****************************************************************************//
 
-#include "..\Drivers\LIN0_DRV\LIN0_DRV.cfg"
-#include "..\Drivers\mb96348rs.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\LIN0_DRV\LIN0_DRV.cfg"
+#include "..\SW_CEDU01\B1.0\SYSTEME\REG\mb96348rs.h"
 
 void InitUART1(void);
 void InitICU1(void);
