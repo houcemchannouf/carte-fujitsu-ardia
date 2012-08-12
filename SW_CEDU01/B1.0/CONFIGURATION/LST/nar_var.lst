@@ -1,0 +1,103 @@
+_____________________________________________________________________________
+F2MC-16 Family SOFTUNE Assembler V30L13       2012-05-17 16:24:35   Page:   1
+- ASSEMBLE INFORMATION - ( nar_var )
+
+|             Command line         :  C:\Softune\bin\fasm907s.exe -f C:\DOC |
+|                                     UME~1\ARDIA\LOCALS~1\Temp\fa185.opt   |
+|                                                                           |
+|             Total errors         :    0                                   |
+|             Total warnings       :    0                                   |
+|                                       There were no errors.               |
+|                                                                           |
+|             Object file          :  C:\DOCUME~1\ARDIA\LOCALS~1\Temp\fa184 |
+|                                     .obj                                  |
+|             List file            :  nar_var.lst                           |
+|                                                                           |
+|                                                                           |
+| NO NEST     SOURCE-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          c:\docume~1\ardia\locals~1\temp\fa18 2012-05-17 16:24:35      |
+|             2.asm                                                         |
+| -- -------- ------------------------------------ ------------------------ |
+|                                                                           |
+|                                                                           |
+|             Current path         :  C:\Documents and Settings\ARDIA\Burea |
+|                                     u\ARDIA-CEDU01\trunk\ARDIA-CEDU01\06- |
+|                                     SW_TESTLIS3DH\B1.0\CONFIGURATION      |
+|             Include path         :  INC907     = C:\Softune\LIB\907\INCLU |
+|                                                  DE\                      |
+|             Work file path       :  TMP        = C:\DOCUME~1\ARDIA\LOCALS |
+|                                                  ~1\Temp\                 |
+|             Default Option file  :  OPT907     = C:\Softune\LIB\907\ (fas |
+|                                                  m907.opt)                |
+|                                                                           |
+|                                                                           |
+| NO NEST     OPTION-FILE-NAME                     CREATE DATE/TIME         |
+| -- -------- ------------------------------------ ------------------------ |
+|  0          C:\Softune\LIB\907\fasm907.opt       2000-09-11 16:50:10      |
+|             ------------------------------------                          |
+|             # FFMC-16 Family Softune Assembler D                          |
+|             efault Option File                                            |
+| -- -------- ------------------------------------ ------------------------ |
+|  1          C:\DOCUME~1\ARDIA\LOCALS~1\Temp\fa18 2012-05-17 16:24:35      |
+|             5.opt                                                         |
+|             ------------------------------------                          |
+|             -cpu                                                          |
+|             MB96F346RSA                                                   |
+|             -g                                                            |
+|             -lf                                                           |
+|             "nar_var.lst"                                                 |
+|             "c:\docume~1\ardia\locals~1\temp\fa1                          |
+|             82.asm"                                                       |
+|             -o                                                            |
+|             "C:\DOCUME~1\ARDIA\LOCALS~1\Temp\fa1                          |
+|             84.obj"                                                       |
+|             -name                                                         |
+|             nar_var                                                       |
+|                                                                           |
+| -- -------- ------------------------------------ ------------------------ |
+|___________________________________________________________________________|
+_____________________________________________________________________________
+F2MC-16 Family SOFTUNE Assembler V30L13       2012-05-17 16:24:35   Page:   2
+- SOURCE LISTING - ( nar_var )
+
+SN LOC    OBJ                           LLINE      SOURCE
+
+<c:\docume~1\ardia\locals~1\temp\fa182.
+asm>                                    =====
+                                            1              ._LANGUAGE      C_FFMC-16, N, M, N
+                                            2              ._FILE  "c:\documents and settings\ardia
+                                                   \bureau\ardia-cedu01\trunk\ardia-cedu01\06-sw_te
+                                                   stlis3dh\b1.0\systeme\variables\nar_var.c", 0
+                                            3              ._FILE  "C:\DOCUME~1\ARDIA\LOCALS~1\Temp
+                                                   \fa180.i", 1
+                                            4              ._BTYPE 1, 1
+                                            5              ._BTYPE 2, 1
+                                            6              ._BTYPE 3, 2
+                                            7              ._BTYPE 4, 2
+                                            8              ._BTYPE 5, 2
+                                            9              ._BTYPE 6, 2
+                                           10              ._BTYPE 7, 4
+                                           11              ._BTYPE 8, 4
+                                           12              ._BTYPE 11, 4
+                                           13              ._BTYPE 12, 8
+                                           14              ._BTYPE 13, 8
+                                           15              ._BTYPE 15, 0
+MODULE NAME = nar_var                      16              .PROGRAM        nar_var
+                                           17              .LIBRARY        "lib904m.lib"
+                                           18
+DA 000000 -----------<DATA>------------    19              .SECTION        DATA, DATA, ALIGN=2
+                                           20              .GLOBAL _ucCLV_ePressedSwitch
+DA 000000                                  21      _ucCLV_ePressedSwitch:
+DA 000000 [1]B                             22              .RES.B  1
+                                           23              ._SYMBOL        "ucCLV_ePressedSwitch",
+                                                   V, 2, E, "_ucCLV_ePressedSwitch"
+                                           24              ._TYPED N
+          ==                               25              .END
+_____________________________________________________________________________
+F2MC-16 Family SOFTUNE Assembler V30L13       2012-05-17 16:24:35   Page:   3
+- SECTION LISTING - ( nar_var )
+
+   NO SECTION-NAME                       SIZE  ATTRIBUTES
+
+    0 DATA . . . . . . . . . . . . . .  000001 DATA    REL ALIGN=2
