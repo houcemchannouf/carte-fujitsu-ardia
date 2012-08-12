@@ -36,14 +36,10 @@
   - Interrupt vector definition
 -----------------------------------------------------------------------------*/
 
-#include "..\..\Systeme\Reg\mb96346rs.h"
-
-
-#include "..\..\DRIVERS\LCD_DRV\B1.0\LCD_DRV.h"
-#include "..\..\DRIVERS\CLV_DRV\B1.0\CLV_DRV.h"
-
-
-
+#include "mb96348rs.h"
+#include "..\UART0_INT\UART0_DRV_INT.h"
+#include "..\LIN0_DRV\LIN0_DRV.h"
+#include "..\CLV_DRV\CLV_DRV.h"
 /*---------------------------------------------------------------------------
    InitIrqLevels()
    This function  pre-sets all interrupt control registers. It can be used
@@ -66,13 +62,14 @@ void InitIrqLevels(void)
   {
     ICR = (irq << 8) | DEFAULT_ILM_MASK;
   }
-  
   ICR = (17 << 8) | 6;	// External Interrupt 0
   ICR = (18 << 8) | 6;	// External Interrupt 1  
   ICR = (19 << 8) | 6;	// External Interrupt 2
   ICR = (20 << 8) | 6;	// External Interrupt 3 
-
-
+  ICR = (57 << 8) | 6; // ICU1
+  ICR = (79 << 8) | 6; // LIN-UART 0 RX 
+  ICR = (80 << 8) | 6; // LIN-UART 0 TX 
+  ICR = (81 << 8) | 6; // LIN-UART 1 RX
 }
 
 /*---------------------------------------------------------------------------
@@ -83,7 +80,6 @@ void InitIrqLevels(void)
 
 __interrupt void DefaultIRQHandler (void);
 __interrupt void IRQHandler_EI0 (void);
-
 
 /*---------------------------------------------------------------------------
    Vector definiton for MB9634x
@@ -101,9 +97,9 @@ __interrupt void IRQHandler_EI0 (void);
 #pragma intvect DefaultIRQHandler 15   /* Sub Clock Timer              */
 #pragma intvect DefaultIRQHandler 16   /* Reserved                     */
 #pragma intvect vVec_eEXT0_Isr    17   /* EXT0                         */
-#pragma intvect vVec_eEXT1_Isr 		18   /* EXT1                         */
-#pragma intvect vVec_eEXT2_Isr 		19   /* EXT2                         */
-#pragma intvect vVec_eEXT3_Isr 		20   /* EXT3                         */
+#pragma intvect vVec_eEXT1_Isr    18   /* EXT1                         */
+#pragma intvect vVec_eEXT2_Isr    19   /* EXT2                         */
+#pragma intvect vVec_eEXT3_Isr    20   /* EXT3                         */
 #pragma intvect DefaultIRQHandler 21   /* EXT4                         */
 #pragma intvect DefaultIRQHandler 22   /* EXT5                         */
 #pragma intvect DefaultIRQHandler 23   /* EXT6                         */
@@ -140,7 +136,7 @@ __interrupt void IRQHandler_EI0 (void);
 #pragma intvect DefaultIRQHandler 54   /* RLT3                         */
 #pragma intvect DefaultIRQHandler 55   /* PPGRLT - RLT6                */
 #pragma intvect DefaultIRQHandler 56   /* ICU0                         */
-#pragma intvect DefaultIRQHandler 57   /* ICU1                         */
+#pragma intvect vICU1_IRQHandler  57   /* ICU1                         */
 #pragma intvect DefaultIRQHandler 58   /* ICU2                         */
 #pragma intvect DefaultIRQHandler 59   /* ICU3                         */
 #pragma intvect DefaultIRQHandler 60   /* ICU4                         */
@@ -162,9 +158,9 @@ __interrupt void IRQHandler_EI0 (void);
 #pragma intvect DefaultIRQHandler 76   /* ADC                          */
 #pragma intvect DefaultIRQHandler 77   /* ALARM0                       */
 #pragma intvect DefaultIRQHandler 78   /* ALARM1                       */
-#pragma intvect DefaultIRQHandler 79   /* LIN-UART 0 RX                */
-#pragma intvect DefaultIRQHandler 80   /* LIN-UART 0 TX                */
-#pragma intvect DefaultIRQHandler 81   /* LIN-UART 1 RX                */
+#pragma intvect vRX_UART0_INT     79   /* LIN-UART 0 RX                */
+#pragma intvect vTX_UART0_INT     80   /* LIN-UART 0 TX                */
+#pragma intvect vRx_LIN0          81   /* LIN-UART 1 RX                */
 #pragma intvect DefaultIRQHandler 82   /* LIN-UART 1 TX                */
 #pragma intvect DefaultIRQHandler 83   /* LIN-UART 2 RX                */
 #pragma intvect DefaultIRQHandler 84   /* LIN-UART 2 TX                */
@@ -187,6 +183,15 @@ __interrupt void IRQHandler_EI0 (void);
    your own placeholder or add necessary code here. 
 -----------------------------------------------------------------------------*/
 
+__interrupt 
+void DefaultIRQHandler (void)
+{
+    __DI();                              /* disable interrupts */
+    while(1)
+    {
+        __wait_nop();                    /* halt system */
+    }
+}
 __interrupt  void DefaultIRQHandler (void)
 {
     __DI();                              /* disable interrupts */
@@ -197,28 +202,46 @@ __interrupt  void DefaultIRQHandler (void)
 }
 
 
-
 __interrupt  void vVec_eEXT0_Isr (void)
 {
 
-	vCLV_eSW2_Isr();
+  	vCLV_eSW2();
 }
 
 __interrupt  void vVec_eEXT1_Isr (void)
 {
 
-		vCLV_eSW3_Isr();
+		vCLV_eSW3();
 }
 
 __interrupt  void vVec_eEXT2_Isr (void)
 {
 
-		vCLV_eSW4_Isr();
+		vCLV_eSW4();
 }
 
 __interrupt  void vVec_eEXT3_Isr (void)
 {
 
-		vCLV_eSW5_Isr();
+		vCLV_eSW5();
+}
+__interrupt void vRX_UART0_INT(void){
+
+    RX_UART0();
+}
+__interrupt void vTX_UART0_INT(void){
+
+   TX_UART0();
 }
 
+__interrupt void vICU1_IRQHandler(void){
+  
+  ICU1_IRQHandler();
+
+}
+
+__interrupt void vRX_LIN0(void){
+  
+  RX_LIN0();
+
+}
