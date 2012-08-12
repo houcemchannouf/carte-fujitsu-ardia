@@ -27,7 +27,7 @@
 // INCUSER
 //****************************************************************************//
 
-#include "..\CLV_DRV\CLV_DRV.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\CLV_DRV\CLV_DRV.h"
 
 unsigned char FlagSw2;
 unsigned char FlagSw3;
