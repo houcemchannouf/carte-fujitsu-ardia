@@ -36,10 +36,10 @@
   - Interrupt vector definition
 -----------------------------------------------------------------------------*/
 
-#include "mb96348rs.h"
-#include "..\UART0_INT\UART0_DRV_INT.h"
-#include "..\LIN0_DRV\LIN0_DRV.h"
-#include "..\CLV_DRV\CLV_DRV.h"
+#include "..\SW_CEDU01\B1.0\SYSTEME\REG\mb96348rs.h"
+#include "..\SW_CEDU01\B1.0\UART0_DRV_INT\UART0_DRV_INT.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\LIN0_DRV\LIN0_DRV.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\CLV_DRV\CLV_DRV.h"
 /*---------------------------------------------------------------------------
    InitIrqLevels()
    This function  pre-sets all interrupt control registers. It can be used
@@ -245,3 +245,6 @@ __interrupt void vRX_LIN0(void){
   RX_LIN0();
 
 }
+
+
+
