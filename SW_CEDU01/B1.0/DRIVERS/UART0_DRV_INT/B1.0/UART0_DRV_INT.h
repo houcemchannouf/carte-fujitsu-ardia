@@ -27,8 +27,8 @@
 // INCUSER
 //****************************************************************************//
 
-#include "..\Drivers\mb96348rs.h"
-#include "..\Drivers\UART_0\UART0_DRV_INT.cfg"
+#include "..\SW_CEDU01\B1.0\SYSTEME\REG\mb96348rs.h"
+#include "..\SW_CEDU01\B1.0\UART0_DRV_INT\UART0_DRV_INT.cfg"
 
 void vUART0_iInitUART(void);
 void TX_UART0(void);
