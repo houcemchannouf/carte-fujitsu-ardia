@@ -25,7 +25,9 @@
 
 
 ==Function number one==
+
 *Initialisation du CAN0* 
+
 Fonction void CAN0_init (unsigned long ulBaudRate, unsigned char ucFlag_CAN)
 
    This function initialize the CAN interface. In fact, it should contain:
@@ -61,7 +63,9 @@ Fonction void CAN0_init (unsigned long ulBaudRate, unsigned char ucFlag_CAN)
 *_Start of the CAN operation_*
 
 ==Function number two==
+
 *Tester l’initialisation de l’interface CAN0* 
+
 Fonction void vCAN0_eInitSendTest_Exe (void)
 
 This function tests the initilization of CAN interface.In fact it contains the same details like the first one :
@@ -72,7 +76,9 @@ This function tests the initilization of CAN interface.In fact it contains the s
  # The start of the CAN operation
 
 ==Function number three==
+
 *Set RxBuffer*
+
 Fonction void CAN0_SetRxBuffer(unsigned char buffer, unsigned long id, unsigned char irq, unsigned long mask)
 
 This function permit to transfer the recieved message at the registre interface in order to copy it in memory.In fact it should contain:
@@ -113,9 +119,6 @@ This function permit to transfer the recieved message at the registre interface 
 ||IF1MCTR0_RMTEN||9th bit of IF1MCTR0(Remote Enable)||0:Disable Remote(At the reception of a Remote Frame, TXRQST is left unchanged) / 1: enable Remote(...TXRQST is set)||
 ||IF1MCTR0_TXRQST||8th bit of IF1MCTR0||0:Clear Transmission Request/1: Message Object transmission is requested and is not yet done.||
 ||IF1MCTR0_EOB||8th bit of IF1MCTR0(End of Buffer)||0: Buffer is part of FiFo / 1: Single message buffer||
-
-
-
 *_Coping message to the register interface_*
 
 ||IF1CREQ0||000710H CAN0 - IF1 Command request register Low IF1CREQL0||specify the message number and transfet the Message Object in the buffer||
