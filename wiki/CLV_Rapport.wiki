@@ -1,0 +1,160 @@
+                          = Driver CLV =
+
+
+
+
+=Description du Driver CLV : =
+==Initialisation : ==
+    Dans ce document on s’intéresse au Driver Clavier , les fonctions de base du driver initialiser les boutons et définir les vecteurs d'interruption (Voir vector.c).
+
+=Description des fonctions de driver : =
+
+==Initialisation du clavier==
+
+
+||Prototype||  void vCLV_iClvInitButtons_Cmd(void)||
+||Paramètres||  void  E  -||
+||Renvoi||  void  S  -||
+||Fonction||  Cette fonction initialise le Driver Clavier || 
+||Condition||  Sans objet. ||
+*Fonction : * void vCLV_iClvInitButtons_Cmd(void)
+
+*Algorithme :*
+
+•  Appel des fonctions d'initialisation de chaque Bouton sw2,sw3,sw4,sw5.
+
+
+
+==Initialiser le bouton SW2 :==
+
+
+||Prototype|| void vCLV_InitExtInt0_Cmd(void)||
+||Paramètres||  Void  E     -||
+||Renvoi||  Void  S  - ||
+||Fonction||  Initialiser le Bouton sw2||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_InitExtInt0_Cmd(void)
+
+*Algorithme: *
+
+•﻿  Activer le Pin43 PIER07_IE0 .
+•﻿  configurer le pin43 DDR07_D0 Input.
+•﻿  Activer l'interruption
+
+
+==Initialiser le bouton SW3 :==
+
+
+||Prototype|| void vCLV_InitExtInt1_Cmd(void)||
+||Paramètres||  Void  E     -||
+||Renvoi||  Void  S  - ||
+||Fonction||  Initialiser le Bouton sw3||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_InitExtInt1_Cmd(void)
+
+*Algorithme: *
+
+•﻿  Activer le Pin44 PIER07_IE1 .
+•﻿  configurer le pin44 DDR07_D1 Input.
+•﻿  Activer l'interruption.
+
+
+
+==Initialiser le bouton SW4 :==
+
+
+||Prototype|| void vCLV_InitExtInt2_Cmd(void)||
+||Paramètres||  Void  E     -||
+||Renvoi||  Void  S  - ||
+||Fonction||  Initialiser le Bouton sw4||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_InitExtInt2_Cmd(void)
+
+*Algorithme: *
+
+•﻿  Activer le Pin45 PIER07_IE2 .
+•﻿  configurer le pin45 DDR07_D2 Input.
+•﻿  Activer l'interruption.
+
+
+
+==Initialiser le bouton SW5 :==
+
+
+||Prototype|| void vCLV_InitExtInt3_Cmd(void)||
+||Paramètres||  Void  E     -||
+||Renvoi||  Void  S  - ||
+||Fonction||  Initialiser le Bouton sw5||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_InitExtInt3_Cmd(void)
+
+*Algorithme: *
+
+•﻿  Activer le Pin46 PIER07_IE3 .
+•﻿  configurer le pin46 DDR07_D3 Input.
+•﻿  Activer l'interruption.
+
+
+==Traitement de l'interruption sur le bouton SW2 :==
+
+
+||Prototype||  :  void vCLV_eSW2(void) ||
+||Paramétres||  Void  E  -||
+||Renvoi||  Void  S  -||
+||Fonction||  Definir l'interruption sur le bouton SW2||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_eSW2(void) 
+
+*Algorithme : *
+
+•﻿  Exécution de l'interruption si le flag EIRR0_ER0 sera 1.
+•﻿  Mise à jour du flag.
+
+
+==Traitement de l'interruption sur le bouton SW3 :==
+
+
+||Prototype||  :  void vCLV_eSW3(void) ||
+||Paramétres||  Void  E  -||
+||Renvoi||  Void  S  -||
+||Fonction||  Definir l'interruption sur le bouton SW3||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_eSW3(void) 
+
+*Algorithme : *
+
+•﻿  Exécution de l'interruption si le flag EIRR0_ER1 sera 1.
+•﻿  Mise à jour du flag.
+
+
+==Traitement de l'interruption sur le bouton SW4 :==
+
+
+||Prototype||  :  void vCLV_eSW4(void) ||
+||Paramétres||  Void  E  -||
+||Renvoi||  Void  S  -||
+||Fonction||  Definir l'interruption sur le bouton SW4||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_eSW4(void) 
+
+*Algorithme : *
+
+•﻿  Exécution de l'interruption si le flag EIRR0_ER2 sera 1.
+•﻿  Mise à jour du flag.
+
+
+==Traitement de l'interruption sur le bouton SW5 :==
+
+
+||Prototype||  :  void vCLV_eSW5(void) ||
+||Paramétres||  Void  E  -||
+||Renvoi||  Void  S  -||
+||Fonction||  Definir l'interruption sur le bouton SW5||
+||Condition||  Sans objet.||
+*Fonction : * void vCLV_eSW5(void) 
+
+*Algorithme : *
+
+•﻿  Exécution de l'interruption si le flag EIRR0_ER3 sera 1.
+•﻿  Mise à jour du flag.
+
