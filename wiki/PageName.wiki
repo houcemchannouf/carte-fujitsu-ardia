@@ -37,9 +37,9 @@
 
 *Algorithme: *
 
-•﻿  Activer le Pin43 PIER07_IE0 .
-•﻿  configurer le pin43 DDR07_D0 Input.
-•﻿  Activer l'interruption
+•	Activer le Pin43 PIER07_IE0 .
+•	configurer le pin43 DDR07_D0 Input.
+•	Activer l'interruption
 
 
 ==Initialiser le bouton SW3 :==
@@ -54,9 +54,9 @@
 
 *Algorithme: *
 
-•﻿  Activer le Pin44 PIER07_IE1 .
-•﻿  configurer le pin44 DDR07_D1 Input.
-•﻿  Activer l'interruption.
+•	Activer le Pin44 PIER07_IE1 .
+•	configurer le pin44 DDR07_D1 Input.
+•	Activer l'interruption.
 
 
 
@@ -72,9 +72,9 @@
 
 *Algorithme: *
 
-•﻿  Activer le Pin45 PIER07_IE2 .
-•﻿  configurer le pin45 DDR07_D2 Input.
-•﻿  Activer l'interruption.
+•	Activer le Pin45 PIER07_IE2 .
+•	configurer le pin45 DDR07_D2 Input.
+•	Activer l'interruption.
 
 
 
@@ -90,9 +90,9 @@
 
 *Algorithme: *
 
-•﻿  Activer le Pin46 PIER07_IE3 .
-•﻿  configurer le pin46 DDR07_D3 Input.
-•﻿  Activer l'interruption.
+•	Activer le Pin46 PIER07_IE3 .
+•	configurer le pin46 DDR07_D3 Input.
+•	Activer l'interruption.
 
 
 ==Traitement de l'interruption sur le bouton SW2 :==
@@ -107,8 +107,8 @@
 
 *Algorithme : *
 
-•﻿  Exécution de l'interruption si le flag EIRR0_ER0 sera 1.
-•﻿  Mise à jour du flag.
+•	Exécution de l'interruption si le flag EIRR0_ER0 sera 1.
+•	Mise à jour du flag.
 
 
 ==Traitement de l'interruption sur le bouton SW3 :==
@@ -123,8 +123,8 @@
 
 *Algorithme : *
 
-•﻿  Exécution de l'interruption si le flag EIRR0_ER1 sera 1.
-•﻿  Mise à jour du flag.
+•	Exécution de l'interruption si le flag EIRR0_ER1 sera 1.
+•	Mise à jour du flag.
 
 
 ==Traitement de l'interruption sur le bouton SW4 :==
@@ -139,8 +139,8 @@
 
 *Algorithme : *
 
-•﻿  Exécution de l'interruption si le flag EIRR0_ER2 sera 1.
-•﻿  Mise à jour du flag.
+•	Exécution de l'interruption si le flag EIRR0_ER2 sera 1.
+•	Mise à jour du flag.
 
 
 ==Traitement de l'interruption sur le bouton SW5 :==
@@ -155,6 +155,6 @@
 
 *Algorithme : *
 
-•﻿  Exécution de l'interruption si le flag EIRR0_ER3 sera 1.
-•﻿  Mise à jour du flag.
+•	Exécution de l'interruption si le flag EIRR0_ER3 sera 1.
+•	Mise à jour du flag.
 
