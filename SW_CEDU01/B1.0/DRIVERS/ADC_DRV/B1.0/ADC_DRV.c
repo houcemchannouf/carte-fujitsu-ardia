@@ -28,7 +28,7 @@
 //****************************************************************************//
 
 
-#include "../Drivers/ADC_DRV/ADC_DRV.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\ADC_DRV\ADC_DRV.cfg"
 
 unsigned int rslt;
 
