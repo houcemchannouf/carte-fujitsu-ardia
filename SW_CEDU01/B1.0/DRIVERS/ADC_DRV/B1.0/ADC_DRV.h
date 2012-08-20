@@ -27,8 +27,8 @@
 // INCUSER
 //****************************************************************************//
 
-#include "..\Drivers\mb96348rs.h"
-#include "..\Drivers\ADC_DRV\ADC_DRV.cfg"
+#include "..\SW_CEDU01\B1.0\SYSTEME\REG\mb96348rs.h"
+#include "..\SW_CEDU01\B1.0\DRIVERS\ADC_DRV\ADC_DRV.cfg"
 
 void InitADC (void);
 void vIrq_ADC(void);
