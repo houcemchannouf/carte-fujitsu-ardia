@@ -36,10 +36,12 @@
   - Interrupt vector definition
 -----------------------------------------------------------------------------*/
 
-#include "..\SW_CEDU01\B1.0\SYSTEME\REG\mb96348rs.h"
-#include "..\SW_CEDU01\B1.0\UART0_DRV_INT\UART0_DRV_INT.h"
-#include "..\SW_CEDU01\B1.0\DRIVERS\LIN0_DRV\LIN0_DRV.h"
-#include "..\SW_CEDU01\B1.0\DRIVERS\CLV_DRV\CLV_DRV.h"
+#include "mb96348rs.h"
+#include "..\UART0_INT\UART0_DRV_INT.h"
+#include "..\LIN0_DRV\LIN0_DRV.h"
+#include "..\CLV_DRV\CLV_DRV.h"
+#include "..\CLV_DRV\ADC_DRV.h"
+
 /*---------------------------------------------------------------------------
    InitIrqLevels()
    This function  pre-sets all interrupt control registers. It can be used
@@ -67,6 +69,7 @@ void InitIrqLevels(void)
   ICR = (19 << 8) | 6;	// External Interrupt 2
   ICR = (20 << 8) | 6;	// External Interrupt 3 
   ICR = (57 << 8) | 6; // ICU1
+  ICR = (76 << 8) | 6; // ADC 
   ICR = (79 << 8) | 6; // LIN-UART 0 RX 
   ICR = (80 << 8) | 6; // LIN-UART 0 TX 
   ICR = (81 << 8) | 6; // LIN-UART 1 RX
@@ -155,7 +158,7 @@ __interrupt void IRQHandler_EI0 (void);
 #pragma intvect DefaultIRQHandler 73   /* FRT1                         */
 #pragma intvect DefaultIRQHandler 74   /* I2C0                         */
 #pragma intvect DefaultIRQHandler 75   /* I2C1                         */
-#pragma intvect DefaultIRQHandler 76   /* ADC                          */
+#pragma intvect irq_ADC           76   /* ADC                          */
 #pragma intvect DefaultIRQHandler 77   /* ALARM0                       */
 #pragma intvect DefaultIRQHandler 78   /* ALARM1                       */
 #pragma intvect vRX_UART0_INT     79   /* LIN-UART 0 RX                */
@@ -245,6 +248,8 @@ __interrupt void vRX_LIN0(void){
   RX_LIN0();
 
 }
+__interrupt void irq_ADC (void){
+  
+  vIrq_ADC();
 
-
-
+}
