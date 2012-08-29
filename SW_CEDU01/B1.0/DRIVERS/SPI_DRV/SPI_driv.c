@@ -1,7 +1,6 @@
 
-
 //############################################################################//
-// HEAD : (c) ARDIA 2010 : " Any copie and re-utilisation of this file without
+// HEAD : (c) ARDIA 2012 : " Any copie and re-utilisation of this file without
 //                           the written consent of ARDIA is forbidden "
 //        --------------------------------------------------------------------
 //        Classification :  (-)No   (-)Confident. ARDIA   (-)Confident. Client
@@ -17,7 +16,7 @@
 //----------------------------------------------------------------------------//
 // HIST : Version |   Date   | Author | Description
 //----------------------------------------------------------------------------//
-//         01.00  | 08/08/12|  YFAR  | Creation of this file
+//         01.00  | 08/08/12|  Ben Slimene Rihem  | Creation of this file
 //
 //############################################################################//
 
