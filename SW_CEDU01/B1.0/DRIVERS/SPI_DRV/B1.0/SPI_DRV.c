@@ -1,5 +1,5 @@
 //############################################################################//
-// HEAD : (c) ARDIA 2010 : " Any copie and re-utilisation of this file without  
+// HEAD : (c) ARDIA 2012 : " Any copie and re-utilisation of this file without  
 //                           the written consent of ARDIA is forbidden "        
 //        --------------------------------------------------------------------  
 //        Classification :  (-)No   (-)Confident. ARDIA   (-)Confident. Client  
@@ -15,7 +15,7 @@
 //----------------------------------------------------------------------------//
 // HIST : Version |   Date   | Author | Description                             
 //----------------------------------------------------------------------------//
-//         01.00  | 18/05/12 |  YFAR  | Creation of this file
+//         01.00  | 18/07/12 |  YFAR  | Creation of this file
 //
 //############################################################################//
 
@@ -26,9 +26,9 @@
 //****************************************************************************//
 // INCUSER
 //****************************************************************************//
-#include "..\..\..\SYSTEME\REG\mb96346rs.h"
-#include "..\..\..\DRIVERS\SPI_DRV\B1.0\SPI_DRV.h"
-//#include "mb96346rw.h"
+#include "mb96348rs.h"
+#include "SPI_DRV.h"
+//#include "mb96348rw.h"
 void vSPI_iCS_Set(unsigned char u8State);
 void vSPI_iStartBit_Set(unsigned char u8State);
 void wait(unsigned int j);
