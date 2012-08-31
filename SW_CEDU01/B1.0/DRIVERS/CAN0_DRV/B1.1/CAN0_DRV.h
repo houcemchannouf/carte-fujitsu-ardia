@@ -1,5 +1,5 @@
 //############################################################################//
-// HEAD : (c) ARDIA 2010 : " Any copie and re-utilisation of this file without
+// HEAD : (c) ARDIA 2012 : " Any copie and re-utilisation of this file without
 //                           the written consent of ARDIA is forbidden "
 //        --------------------------------------------------------------------
 //        Classification :  (-)No   (-)Confident. ARDIA   (-)Confident. Client
@@ -15,7 +15,7 @@
 //----------------------------------------------------------------------------//
 // HIST : Version |   Date   | Author | Description
 //----------------------------------------------------------------------------//
-//         01.00  | 11/10/10 |  SGHR  | Creation of this file
+//         01.10  | 12/10/10 |SBK & IH| Creation of this file
 //
 //############################################################################//
 
@@ -27,11 +27,11 @@
 // INCUSER
 //****************************************************************************//
 #include "..\..\..\SYSTEME\REG\mb96348rs.h"
-#include "..\..\..\DRIVERS\CAN0_DRV\B1.0\CAN0_DRV.cfg"
+#include "..\..\..\DRIVERS\CAN0_DRV\B1.1\CAN0_DRV.cfg"
 
 #define HEX      0
 #define DEC      1
-#define CAN_TIMEOUT 0xFFFF    // <<< simple timeout value, if CAN-data can not be send
+#define CAN_TIMEOUT 0xFFFF    // simple timeout value, if CAN-data can not be send
 
 
 int  CAN0_GetRxBuffer(void);
