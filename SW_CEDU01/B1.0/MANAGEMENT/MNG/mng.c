@@ -1,11 +1,11 @@
 //############################################################################//
-// HEAD : (c) ARDIA 2010 : " Any copie and re-utilisation of this file without  
+// HEAD : (c) ARDIA 2012 : " Any copie and re-utilisation of this file without  
 //                           the written consent of ARDIA is forbidden "        
 //        --------------------------------------------------------------------  
 //        Classification :  (-)No   (-)Confident. ARDIA   (-)Confident. Client  
 //        --------------------------------------------------------------------  
 //        --------------------------------------------------------------------  
-//        Module name : com_mng
+//        Module name : mng
 //############################################################################//
 // FILE : com_mng.c
 //----------------------------------------------------------------------------//
@@ -15,14 +15,14 @@
 //----------------------------------------------------------------------------//
 // HIST : Version |   Date   | Author | Description                             
 //----------------------------------------------------------------------------//
-//         01.00  |          |        | Creation of this file
+//         01.10  |          |        | Creation of this file
 //
 //############################################################################//
-#include "..\..\..\Systeme\Reg\mb96346rs.h"
-#include "..\..\..\MANAGEMENT\COM_MNG\B1.0\com_mng.h"
-#include "..\..\..\systeme\variables\near_var.h"
-#include "..\..\..\DRIVERS\AS0_DRV\B1.0\AS0_DRV.h"
-#include "..\..\..\DRIVERS\LCD_DRV\B1.0\LCD_DRV.h"
+#include "..\..\..\Systeme\Reg\mb96348rs.h"
+#include "..\..\..\MANAGEMENT\COM_MNG\B1.1\mng.h"
+#include "..\..\..\systeme\variables\var.h"
+#include "..\..\..\DRIVERS\AS0_DRV\B1.1\AS0_DRV.h"
+#include "..\..\..\DRIVERS\LCD_DRV\B1.1\LCD_DRV.h"
 
 
 //############################################################################//
@@ -34,7 +34,7 @@
 //----------------------------------------------------------------------------//
 //         01.00  |          |        | Creation of this function
 //############################################################################//
-//pour envoyer une chaine de caratères 
+//pour envoyer une chaine de caratÃ¨res 
 
 void vCOM_MNG_Init_exe(void)       
 {
@@ -203,8 +203,8 @@ case  SID_SET_PROTOCOL_SETTINGS_SPI :
         
 ucEtat_IHM_Espion= Espion_SET_PROTOCOL_SETTINGS_PR; 
 ucComMng_CurrentSendState =     SEND_SET_PROTOCOL_SETTINGS_PR;
-// cas de la réponse nagative à définr
-// ajouter verif parametres spi si ok reponse positive sinon négative
+// cas de la rÃ©ponse nagative Ã  dÃ©finr
+// ajouter verif parametres spi si ok reponse positive sinon nÃ©gative
 //ucComMng_CurrentSendState =   SEND_SET_PROTOCOL_SETTINGS_NR_PNS;
 //ucComMng_CurrentSendState =   SEND_SET PROTOCOL_SETTINGS_NR_POR;
 
@@ -212,8 +212,8 @@ case  SID_SET_PROTOCOL_SETTINGS_I2C :
 
 ucEtat_IHM_Espion= Espion_SET_PROTOCOL_SETTINGS_PR; 
 ucComMng_CurrentSendState =     SEND_SET_PROTOCOL_SETTINGS_PR;
-// cas de la réponse nagative à définr
-// ajouter verif parametres i2c si ok reponse positive sinon négative
+// cas de la rÃ©ponse nagative Ã  dÃ©finr
+// ajouter verif parametres i2c si ok reponse positive sinon nÃ©gative
 //ucComMng_CurrentSendState =   SEND_SET_PROTOCOL_SETTINGS_NR_PNS;
 //ucComMng_CurrentSendState =   SEND_SET PROTOCOL_SETTINGS_NR_POR;
 
@@ -221,8 +221,8 @@ case  SID_SET_PROTOCOL_SETTINGS_LIN :
 
 ucEtat_IHM_Espion= Espion_SET_PROTOCOL_SETTINGS_PR; 
 ucComMng_CurrentSendState =     SEND_SET_PROTOCOL_SETTINGS_PR;
-// cas de la réponse nagative à définr
-// ajouter verif parametres lin si ok reponse positive sinon négative
+// cas de la rÃ©ponse nagative Ã  dÃ©finr
+// ajouter verif parametres lin si ok reponse positive sinon nÃ©gative
 //ucComMng_CurrentSendState =   SEND_SET_PROTOCOL_SETTINGS_NR_PNS;
 //ucComMng_CurrentSendState =   SEND_SET PROTOCOL_SETTINGS_NR_POR;      
 
@@ -230,7 +230,7 @@ case  SID_START_DATA_BROADCAST :
 
 ucEtat_IHM_Espion= Espion_START_DATA_BROADCAST_PR; 
 ucComMng_CurrentSendState =     SEND_START_DATA_BROADCAST_PR;
-// cas de la réponse nagative à définr
+// cas de la rÃ©ponse nagative Ã  dÃ©finr
 //ucComMng_CurrentSendState =   SEND_START_DATA_BROADCAST_NR;
 break;
 
@@ -238,7 +238,7 @@ case  SID_STOP_DATA_BROADCAST :
 
 ucEtat_IHM_Espion= Espion_STOP_DATA_BROADCAST_PR; 
 ucComMng_CurrentSendState =     SEND_STOP_DATA_BROADCAST_PR;
-// cas de la réponse nagative à définr
+// cas de la rÃ©ponse nagative Ã  dÃ©finr
 //ucComMng_CurrentSendState =   SEND_STOP_DATA_BROADCAST_NR;
 break;
         
@@ -340,7 +340,7 @@ case ucComMng_STATE_GET_CS:
 default:ucComMng_CurrentState =ucComMng_STATE_Decode_SOF ; break;
 }
 
-// automate réception
+// automate rÃ©ception
 
 
 }
@@ -425,26 +425,26 @@ indiceCS=0;
                         ucAS0_TXbuf[indice++]=FR_DATA_ID;
                         ucAS0_TXbuf[indice++]=SID_DATA_BROADCAST_CAN;
                         ucAS0_TXbuf[indice++]=13   ; // data len
-                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID>>24); // data 0 // can id byte 3      à remplacer par CAN_Receive_ID byte 3
-                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID>>16);  // data 1 // can id byte 2      à remplacer par CAN_Receive_ID byte 2
-                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID>>8);   // data 2 // can id byte 1      à remplacer par CAN_Receive_ID byte 1
-                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID);   // data 3 // can id byte 0      à remplacer par CAN_Receive_ID  byte 0
-                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[0];    // data 4 // can data byte 7        à remplacer par CAN_Receive_Data[0]
-                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[1];    // data 5 // can data byte 6        à remplacer par CAN_Receive_Data[1]
+                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID>>24); // data 0 // can id byte 3      Ã  remplacer par CAN_Receive_ID byte 3
+                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID>>16);  // data 1 // can id byte 2      Ã  remplacer par CAN_Receive_ID byte 2
+                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID>>8);   // data 2 // can id byte 1      Ã  remplacer par CAN_Receive_ID byte 1
+                        ucAS0_TXbuf[indice++]=(unsigned char)(CAN_Receive_ID);   // data 3 // can id byte 0      Ã  remplacer par CAN_Receive_ID  byte 0
+                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[0];    // data 4 // can data byte 7        Ã  remplacer par CAN_Receive_Data[0]
+                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[1];    // data 5 // can data byte 6        Ã  remplacer par CAN_Receive_Data[1]
                         ucAS0_TXbuf[indice++]=CAN_Receive_Data[2];    // data 6 // can data byte 5      
                         ucAS0_TXbuf[indice++]=CAN_Receive_Data[3];    // data 7 // can data byte 4      
                         ucAS0_TXbuf[indice++]=CAN_Receive_Data[4];    // data 8 // can data byte 3      
                         ucAS0_TXbuf[indice++]=CAN_Receive_Data[5];    // data 9 // can data byte 2      
                         ucAS0_TXbuf[indice++]=CAN_Receive_Data[6];    // data 10 // can data byte 1     
-                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[7];    // data 11 // can data byte 0   à remplacer par CAN_Receive_Data[8]
-                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[8];    // data 11 // can data byte 0   à remplacer par CAN_Receive_Data[8]
+                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[7];    // data 11 // can data byte 0   Ã  remplacer par CAN_Receive_Data[8]
+                        ucAS0_TXbuf[indice++]=CAN_Receive_Data[8];    // data 11 // can data byte 0   Ã  remplacer par CAN_Receive_Data[8]
                         ucAS0_TXbuf[indice]=0;    // data 12 // CS                                                      
                         
                         for(indiceCS=3;indiceCS<indice;indiceCS++)                      
                         ucAS0_TXbuf[indice]=ucAS0_TXbuf[indice]+ucAS0_TXbuf[indiceCS];//CS update
  
                         vAS0_PutString_exe( ucAS0_TXbuf ,indice+1);
-                        //ucComMng_CurrentSendState reste inchangée
+                        //ucComMng_CurrentSendState reste inchangÃ©e
                         //ucComMng_CurrentSendState=SEND_DATA_BROADCAST_CAN;
                   ucComMng_CurrentSendState=SEND_State_Repos; // on attend la procaine trame can
                         break;
@@ -639,7 +639,7 @@ switch (ucEtat_IHM_Espion)
 {
 
       
-case  Espion_Wait_Start_Frame:  // il faut optimiser le code qui se répéte
+case  Espion_Wait_Start_Frame:  // il faut optimiser le code qui se rÃ©pÃ©te
       
       vCOM_MNG_PrintChaine_exe("Wait Start Frame....");
 
@@ -701,7 +701,7 @@ case Espion_SET_PROTOCOL_SETTINGS_NR_POR:
 case Espion_START_DATA_BROADCAST_PR:
      
       vCOM_MNG_PrintChaine_exe("start  Data     broadcast     OK");
-      vCAN0_TEST_EXE(); // on initialise le can pour transmettre ce qu'on reçoit dans l'it CAN
+      vCAN0_TEST_EXE(); // on initialise le can pour transmettre ce qu'on reÃ§oit dans l'it CAN
       flag_stop_data=1;
       break;
       
