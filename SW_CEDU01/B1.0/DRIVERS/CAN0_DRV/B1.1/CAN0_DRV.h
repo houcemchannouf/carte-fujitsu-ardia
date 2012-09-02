@@ -35,7 +35,8 @@
 
 
 int  CAN0_GetRxBuffer(void);
-void CAN0_init (unsigned long ulBaudRate, unsigned char ucFlag_CAN)int CAN0_ReadMessage(unsigned char buffer, unsigned long *id, unsigned char *memory);
+void CAN0_init (unsigned long ulBaudRate, unsigned char ucFlag_CAN);
+int CAN0_ReadMessage(unsigned char buffer, unsigned long *id, unsigned char *memory);
 int CAN0_SendMessage(unsigned char buffer, unsigned long id, unsigned char *memory);
 void CAN0_SetRxBuffer(unsigned char buffer, unsigned long id, unsigned char irq, unsigned long mask);
 void vCAN0_ReceiveInterrupt_ISRr(void);
