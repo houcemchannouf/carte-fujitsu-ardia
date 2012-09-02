@@ -27,28 +27,47 @@
 // INCUSER
 //****************************************************************************//
 
-#include "..\..\..\DRIVERS\CAN0_DRV\B1.1\CAN0_DRV.h"
-#include "..\..\..\DRIVERS\CAN0_DRV\B1.1\CAN0_DRV.cfg"
-#include "..\..\..\MANAGEMENT\MNG\mng.h"
-#include "..\..\..\systeme\variables\var.h"
+#include "..\..\..\DRIVERS\CAN0_DRV\B1.0\CAN0_DRV.h"
+#include "..\..\..\DRIVERS\CAN0_DRV\B1.0\CAN0_DRV.cfg"
+#include "..\..\..\MANAGEMENT\COM_MNG\mng.h"
+#include "..\..\..\systeme\variables\near_var.h"
 
+
+
+#define DulBTR_8M_20k8_24_66_4     0x7ECF     // BTR config 20.83 kBaud 
+  #define DulBTR_8M_33K0_22_68_4     0x6DCA     // BTR config 33.05 kBaud 
+  #define DulBTR_8M_33K3_20_70_4     0x7EC9     // BTR config 33.33 kBaud 
+  #define DulBTR_8M_83K3_24_66_4     0x7EC3     // BTR config 83.33 kBaud 
+  #define DulBTR_8M_100k_20_70_4     0x5CC3     // BTR config 100.0 kBaud 
+  #define DulBTR_8M_125k_16_68_3     0x4983     // BTR config 125.0 kBaud 
+  #define DulBTR_8M_250k_16_68_3     0x2B01     // BTR config 250.0 kBaud 
+  #define DulBTR_8M_500k_16_68_3     0x1B00    // BTR config 500.0 kBaud 
+  #define DulBTR_8M_1M00_16_68_3     0x2300     // BTR config   1.0 MBaud 
+
+// Macros for ID-Transfer from/to the Arbitration Registers
+//-----------------------------------------------------------------------------
+#define MSG2STD(msg) ((msg & 0x000007FFL) << 18)
+#define MSG2EXT(msg) (msg & 0x1FFFFFFFL)
+#define STD2MSG(reg) (((reg & 0x1FFFFFFFL) >> 18) & 0x000007FFL)
+#define EXT2MSG(reg) (reg & 0x1FFFFFFFL)
 //Fonction d'initialisation:
 //====================================================================
 //1_Set CAN Control Register => CTRLR0_INIT = 1
-//			   
-//			   <====> No msg transfer (No R, No T)
+//   
+//   <====> No msg transfer (No R, No T)
 //
-//				+ Status of CAN_TX is recessive (H)
+//+ Status of CAN_TX is recessive (H)
 //
 //2_Set INIT && CCE => CTRLR0_CCE=1
-//		  
-//		  <=> BTR0 could be setted
+//
+//  <=> BTR0 could be setted
 //
 //NB: * no Message object needed => MSGVAL = 0
 //
 //and after (*) => ** BSP is the responsible for msg transfer	
 //====================================================================
-  void CAN0_init (unsigned long ulBaudRate, unsigned char ucFlag_CAN)
+
+void CAN0_init(unsigned long ulBaudRate, unsigned char ucFlag_CAN)
 {
 	/*Configuration des pins*/
 
@@ -61,7 +80,7 @@ else
 	
 	PIER10= 0x01;
 	COER0_OE= 1 ; 	 //CAN TX is enabled
-	PIER10_IEO= 1;	 // CAN RX is enabled
+	PIER10_IE0= 1;	 // CAN RX is enabled
 	
 	/*setup CAN channel configuration*/ 
 	CTRLR0_INIT = 1; // <=> CTRLR0= 0x0001 *Initialization is started*
@@ -71,7 +90,7 @@ else
 	CTRLR0_IE= 1;    //Enabled - Interrupts will be generated. The request remains active until 
 			 // all pending interrupts are processed.
 
-	BTR0_BRP= ulBaudrate; //Baud Rate Prescaler
+	BTR0_BRP= ulBaudRate; //Baud Rate Prescaler
 
 	/*Activation of CAN operation*/
 
@@ -315,7 +334,7 @@ int CAN0_SendMessage(unsigned char buffer, unsigned long id, unsigned char *memo
   IF1MSK0 = 0x1FFFFFFF;            //  Setup Mask corresponding to our application (HWM 580) 
  
   IF1MSK20_MXTD   = 1;             //  The extended identifier bit (XTD) is used for acceptance filtering.
-=========================================================================================================================================================================  
+//=========================================================================================================================================================================  
 // Prepare Message Control Interface Register 
   
   IF1MCTR0_NEWDAT = 0;             // No new data has been written into the data portion of this Message Object by the Message Handler since last time this flag was cleared
@@ -513,7 +532,7 @@ int CAN0_ReadMessage(unsigned char buffer, unsigned long *id, unsigned char *mem
 
   *((unsigned long *)(memory+4)) = IF2DTB0;
 
-  if(CAN_EXTENDED)
+  if(!ucFlag_CAN)
 
   *id = EXT2MSG(IF2ARB0);   // Get the message ID: STD2MSG for 11bit ID / EXT2MSG for 29bit ID 
 
@@ -538,7 +557,7 @@ int CAN0_ReadMessage(unsigned char buffer, unsigned long *id, unsigned char *mem
   void vCAN0_TEST_EXE(void)
 
 {
-  CAN0_init(); 
+  CAN0_init(ulBaudRate, ucFlag_CAN); 
   
   CAN0_SetRxBuffer( 4, 0x0000, 1, CAN_MASK1); // Receive all messages
   
@@ -569,7 +588,7 @@ int CAN0_ReadMessage(unsigned char buffer, unsigned long *id, unsigned char *mem
 
   if(flag_stop_data==1)
 
-  ucMng_CurrentSendState=SEND_DATA_BROADCAST_CAN; 
+  ucComMng_CurrentSendState=SEND_DATA_BROADCAST_CAN; 
 
   buffer =0; // Only for test 
   
